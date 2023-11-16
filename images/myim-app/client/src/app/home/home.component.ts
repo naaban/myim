@@ -6,7 +6,7 @@ import { ModalService } from '../services/modal.service';
 import { HOME_NAV_ITEMS } from '../utils/_home.nav';
 
 @Component({
-  selector: 'app-home',
+  selector: 'myim-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })

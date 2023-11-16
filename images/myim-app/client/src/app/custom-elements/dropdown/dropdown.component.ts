@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { I18nService } from 'src/app/utils/language/i18n.service';
 
 @Component({
-  selector: 'app-dropdown',
+  selector: 'myim-dropdown',
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.scss']
 })

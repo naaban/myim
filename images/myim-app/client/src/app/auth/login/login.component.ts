@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { MyFormBuilders } from 'src/app/form.builder';
 
 @Component({
-  selector: 'app-login',
+  selector: 'myim-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })

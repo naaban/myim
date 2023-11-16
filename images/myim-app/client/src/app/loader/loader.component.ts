@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { LoaderService } from './loader.service';
 
 @Component({
-  selector: 'app-loader',
+  selector: 'myim-loader',
   templateUrl: './loader.component.html',
   styleUrls: ['./loader.component.scss'],
   animations: [

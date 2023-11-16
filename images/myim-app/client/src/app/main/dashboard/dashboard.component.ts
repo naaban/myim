@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { I18nService } from 'src/app/utils/language/i18n.service';
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'myim-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })

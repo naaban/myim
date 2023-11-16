@@ -4,7 +4,7 @@ import { AppRouteHandler } from 'src/app/utils/app-route.handler';
 import { I18nService } from 'src/app/utils/language/i18n.service';
 import { Location } from '@angular/common';
 @Component({
-  selector: 'app-view-party',
+  selector: 'myim-view-party',
   templateUrl: './view-party.component.html',
   styleUrls: ['./view-party.component.scss']
 })

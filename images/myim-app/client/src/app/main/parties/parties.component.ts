@@ -4,7 +4,7 @@ import { AppRouteHandler } from 'src/app/utils/app-route.handler';
 import { I18nService } from 'src/app/utils/language/i18n.service';
 
 @Component({
-  selector: 'app-parties',
+  selector: 'myim-parties',
   templateUrl: './parties.component.html',
   styleUrls: ['./parties.component.scss']
 })

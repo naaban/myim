@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-shortcut',
+  selector: 'myim-shortcut',
   templateUrl: './shortcut.component.html',
   styleUrls: ['./shortcut.component.scss']
 })

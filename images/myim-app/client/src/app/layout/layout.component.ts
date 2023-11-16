@@ -3,7 +3,7 @@ import { LoaderService } from '../loader/loader.service';
 import { SIDE_NAV_ITEMS } from '../utils/_side.nav';
 
 @Component({
-  selector: 'app-layout',
+  selector: 'myim-layout',
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss']
 })

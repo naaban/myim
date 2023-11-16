@@ -3,7 +3,7 @@ import { I18nService } from './i18n.service';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-    selector: 'app-i18n',
+    selector: 'myim-i18n',
     styles: [`.flag-icon {
     position: relative;
     display: inline-block;

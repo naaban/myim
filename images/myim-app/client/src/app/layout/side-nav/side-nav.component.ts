@@ -7,7 +7,7 @@ import { SIDE_NAV_ITEMS } from 'src/app/utils/_side.nav';
 import { I18nService } from 'src/app/utils/language/i18n.service';
 import { Location } from '@angular/common';
 @Component({
-  selector: 'app-side-nav',
+  selector: 'myim-side-nav',
   templateUrl: './side-nav.component.html',
   styleUrls: ['./side-nav.component.scss'],
   animations: [DropDownMenu]
