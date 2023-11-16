@@ -1,0 +1,19 @@
+@import "../../../utils.scss";
+
+.dropdown {
+    width: 250px;
+    background-color: $white;
+    height: 2rem;
+    border-radius: 0.5rem;
+    border: 0.02rem solid $gray-400;
+    color: $gray-600;
+
+    .dropdown-menu {
+        width: 100%;
+    }
+
+    .active {
+        background-color: $primary-light;
+        color: black;
+    }
+}

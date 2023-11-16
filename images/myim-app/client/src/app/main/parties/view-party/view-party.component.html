@@ -1,0 +1,69 @@
+<div class="header  d-flex justify-content-between ">
+
+
+    <div class="title d-flex">
+        <h5>
+            {{'parties' | i18n:i18nService.currentLanguage}}
+
+        </h5>
+    </div>
+    <div class="d-flex  align-items-center">
+        <div class="px-2">
+
+            <app-shortcut></app-shortcut>
+
+        </div>
+        <div class="px-2">
+
+            <button class="btn btn-sm btn-black  px-3 py-1 ">
+                {{'blukImportParties' | i18n:i18nService.currentLanguage}}
+
+            </button>
+
+
+        </div>
+        <div class="px-2">
+            <button (click)="gotoAddParty()" class="btn   btn-sm btn-primary position-relative">
+                {{'createParty' | i18n:i18nService.currentLanguage}}
+
+            </button>
+
+        </div>
+
+
+    </div>
+</div>
+<div class="wrapper ">
+    <!-- <div class="banner-wrapper py-1">
+        <app-banner></app-banner>
+    </div> -->
+
+
+    <div class="p-2">
+        <div class="d-flex justify-content-between">
+            <div class="d-flex align-items-center">
+                <div class="input-group mb-3  w-100">
+                    <span class="input-group-text input-icon" id="basic-addon1">
+                        <img src="assets/icons/search.svg" alt="">
+                    </span>
+                    <input type="text" class="form-control" [placeholder]="'searchParty' | i18n:i18nService.currentLanguage "   >
+                </div>
+                <div class="input-group mb-3  ps-2 ">
+                    <app-dropdown [placeholder]="'searchCategories'" [createBtnText]="'createCategories'"
+                        [values]="categories" key="name"></app-dropdown>
+                </div>
+
+
+            </div>
+
+            <div class="d-flex">
+                <div class="input-group mb-3 ">
+                    <span class="input-group-text input-icon" id="basic-addon1">
+
+                        <img src="assets/icons/search.svg" alt="">
+                    </span>
+                    <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+                        aria-describedby="basic-addon1">
+                </div>
+            </div>
+        </div>

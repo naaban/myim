@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  myim:
+    image: myim-${NODE_ENV}
+    container_name: myim-${NODE_ENV}
+   
+
+  myim-rabbitmq:
+    image: rabbitmq:management
+    container_name: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: rabbitmqadmin
+      RABBITMQ_DEFAULT_PASS: rabbitmqadmin
+    ports: 
+      - "15672:15672" # For RabbitMQ management dashboard
+      - "5672:5672" # For AMQP
+    networks:
+      - app-network
+
+  myim-redis:
+    image: redis
+    container_name: redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redisdb:/data
+    networks:
+      - app-network
+
+  myim-mongo:
+    image: mongo
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
+    ports:
+      - 27017:27017
+    container_name: mongo
+    # depends_on:
+    #   - chessmate
+    volumes:
+      - mongodb:/data/db
+    networks:
+      - app-network
+
+  
+
+volumes:
+  mongodb:
+    name: mongodb
+  rabbitmqdata:
+    name: rabbitmqdata
+  redisdb:
+    name: redisdb
+
+networks:
+  app-network:
+    driver: bridge

@@ -1,0 +1,21 @@
+<div class="dropdown d-flex align-items-center">
+
+    <div class="w-100 d-flex justify-content-between align-items-center px-2 " type="button" id="dropdownMenuButton1"
+        data-bs-toggle="dropdown" aria-expanded="false">
+        <div class="d-flex align-items-center">
+            {{selected ? key ? selected[key] : selected : placeholder | i18n:i18nService.currentLanguage}}
+        </div>
+        <div class="d-flex align-items-center">
+            <img src="assets/icons/down-gray.svg" class="icon-open" alt="">
+        </div>
+    </div>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li  class="p-2">
+            <button class="btn btn-sm btn-outline-primary btn-primary-hover w-100 ">{{createBtnText | i18n:i18nService.currentLanguage}}</button>
+        </li>
+        <li class="dropdown-item cursor-pointer"
+            [ngClass]="(key && selected )? value[key]==selected[key] ? 'active' : '' : (selected && value== selected) ? 'active' : ''"
+            *ngFor="let value of values" (click)="onItemSelect(value)"><a>{{key ?
+                value[key] : value}}</a></li>
+    </ul>
+</div>

@@ -1,0 +1,33 @@
+@import "../../../utils.scss";
+
+
+.icon {
+   padding-left: 8px;
+   padding-right: 8px;
+}
+
+
+.wrapper {
+   .dashboard-container {
+      display: flex;
+
+
+   }
+
+   .transactions-container {
+      flex-basis: 65%;
+      border: 5px;
+      border-radius: 10px;
+      background-color: $white
+
+   }
+
+   .header {
+      padding: 5px;
+      background-color: $white
+   }
+
+ 
+}
+
+ 

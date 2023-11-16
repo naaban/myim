@@ -1,0 +1,83 @@
+<div class="side-nav pb-2 h-100">
+    <div class=" sidebar  ">
+        <div class="profile-container px-2  position-relative hover-state">
+            <div class="profile p-2 ">
+                <div class="company-profile d-flex align-items-center ">
+                    <div class="avatar"> </div>
+                    <div class="  user-details align-items-center ps-3">
+                        <div>
+                            Business Name
+                        </div>
+                        <div>
+                            7373170701
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="action py-2 px-3 d-grid gap-2 cursor-pointer">
+            <div class="d-flex action-label  align-items-center text-decoration-none">
+                <div class="icon px-2 align-items-center">
+                    <img src="assets/icons/plus-black.svg">
+                </div>
+                <div class="w-100 flex-row">
+                    <div class=" d-flex justify-content-between  w-100 align-items-center">
+                        <div class="d-flex">
+                            Instant Bill
+                        </div>
+                        <div class=" dropdown fill-dark align-items-center">
+                            <div class="h-100 p-2" (click)="openActions()">
+                                <img class="icon-open" src="assets/icons/down-black.svg" alt="">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="nav-dropdown-menu border-radius sub-menu" *ngIf="showActions" [@dropDownMenu]>
+                        <div *ngFor="let c of categories" class="category-container  sub-menu-item position-relative">
+                            <div class="category p-1">{{c.title | i18n:i18nService.currentLanguage}}</div>
+                            <a class="dropdown-item ease-in-background position-relative p-1"
+                                *ngFor="let sc of c.children; let i = index" href="#">
+                                {{sc.title | i18n:i18nService.currentLanguage}}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu " *ngFor="let nav of sideNavItems; let i = index"
+            [ngClass]="{'active': nav.isActive ,'in-active' : !nav.isActive, 'is-open' : nav.isOpen   }">
+            <a (click)="onNavItemClicked(i)"
+                class="d-flex item p-1 hover align-items-center w-100 text-decoration-none cursor-pointer">
+                <div class="icon px-3">
+                    <img [src]="nav.icon">
+                </div>
+                <div class=" w-100 d-flex justify-content-between">
+                    {{nav.title | i18n:i18nService.currentLanguage}}
+                    <div class="d-flex align-items-center justify-content-center me-3 ">
+                        <img *ngIf="nav.children && nav.children.length > 0"
+                            [ngClass]="nav.isOpen ? 'icon-open' : 'icon-close'"
+                            [src]="nav.isOpen ? 'assets/icons/down.svg' :  'assets/icons/right.svg'">
+                    </div>
+                </div>
+            </a>
+            <ng-container *ngIf="nav.children && nav.children.length > 0">
+                <div class="display-block sub-menu w-100 " [@dropDownMenu] *ngIf="nav.isOpen">
+                    <a [ngClass]="{'active': c.isActive , 'in-active' : !c.isActive }"
+                        *ngFor="let c of nav.children; let ci = index" (click)="onNavItemClicked( i ,ci )"
+                        class="d-flex item  hover py-1 align-items-center w-100 text-decoration-none cursor-pointer sub-menu-item ">
+                        <div class="icon ps-5">
+                        </div>
+                        <div class=" w-100 ps-4 d-flex justify-content-between">
+                            {{c.title | i18n:i18nService.currentLanguage}}
+                        </div>
+                    </a>
+                </div>
+            </ng-container>
+        </div>
+        <br>
+        Languages
+        <app-i18n></app-i18n>
+    </div>
+</div>

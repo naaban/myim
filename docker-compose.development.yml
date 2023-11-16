@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  myim:
+    build:
+      context: ./images/myim-app
+      dockerfile: Dockerfile.${NODE_ENV}
+    env_file:
+      - .env
+    ports:
+      - "4200:4200"
+    network_mode: host
+    restart: unless-stopped
+    volumes:
+      - ${CERT_MOUNT}:/certs
+      - ${MYIM_SERVER_UPLOADS_MOUNT}:/uploads
+      - ${MYIM_SEVER_MOUNT}:/home/myim/server
+      - ${MYIM_CLIENT_MOUNT}:/home/myim/client
+    
+ 

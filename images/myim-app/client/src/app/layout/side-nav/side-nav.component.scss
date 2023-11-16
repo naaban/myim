@@ -1,0 +1,93 @@
+@import "../../../utils.scss";
+
+.side-nav {
+    position: relative;
+    background-color: $background-dark;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+
+    .sidebar {
+        background-color: $background-dark;
+        color: $white;
+
+        .item {
+            color: $white;
+        }
+
+        .profile-container {
+            .profile {
+                .company-profile {
+                    .avatar {
+                        width: 2rem;
+                        height: 2rem;
+                        text-align: center;
+                        border-radius: 100%;
+                        text-transform: uppercase;
+                        color: $white;
+                        background-color: $orange;
+                    }
+                }
+            }
+        }
+
+        .nav-dropdown-menu {
+            max-height: 82vh;
+            position: absolute;
+            z-index: 3;
+            overflow-y: auto;
+            left: 12px;
+            background-color: white;
+            margin-top: 0.5rem;
+            width: calc(100% - 24px);
+
+
+            a:hover {
+                color: white;
+                background-color: $primary-light;
+            }
+        }
+
+        .category {
+            position: relative;
+            font-weight: 600;
+            line-height: 1.25rem;
+            color: tint-color($primary, 20%);
+            background: $gray-100;
+            border-top: 0.01rem solid $gray-300;
+            border-bottom: 0.01rem solid $gray-300;
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+
+            .item {
+                color: $black;
+            }
+        }
+
+        .fill-dark {
+            background-color: $background-black-fade;
+        }
+
+        .active,
+        .is-open {
+            color: $white !important;
+            filter: $opacity1;
+
+            &.active {
+                background-color: $primary-dark;
+            }
+
+            &.is-open {
+                background-color: $background-light !important;
+            }
+        }
+
+        .in-active {
+            filter: $opacity05;
+
+            &:hover {
+                filter: $opacity1;
+            }
+        }
+    }
+}

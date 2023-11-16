@@ -1,0 +1,49 @@
+# Use a single base image for all stages
+FROM node:latest AS base
+
+# Set the working directory
+WORKDIR /opt/myim
+
+RUN mkdir /opt/myim/server
+
+RUN mkdir /opt/myim/client
+# Copy package.json and package-lock.json to the working directory
+
+COPY ./server/package*.json ./
+
+# Development stage
+FROM base AS development
+
+# Install development dependencies
+RUN npm install
+
+# Copy the rest of the application code
+COPY ./server .
+
+# Builder stage
+FROM development AS builder
+
+# Run the build command (assumes 'npm run build' is a build step for your application)
+RUN npm run build
+
+# Production stage
+FROM base AS production
+
+# Install production dependencies
+RUN npm install --production
+
+# Copy build artifacts directly to /opt/pg/server
+COPY --from=builder /home/pg/server/dist /opt/pg/server/
+
+# Set the final image
+FROM production
+
+# Copy entrypoint script
+COPY ./entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+# Expose the port your app runs on
+EXPOSE 3000
+
+# Command to run your application
+ENTRYPOINT ["/entrypoint.sh"]

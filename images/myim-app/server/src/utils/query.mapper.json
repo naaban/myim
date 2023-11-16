@@ -1,0 +1,181 @@
+{
+    "pgs": {
+        "aggregatePipeline": [
+            "admin.lookup",
+            "sadmin.lookup",
+            "room.pg.lookup"
+        ],
+        "findQuery": {},
+        "selectedFields": {}
+    },
+    "pg.allocations": {
+        "aggregatePipeline": [
+            "user.lookup",
+            "pg.lookup",
+            "room.lookup",
+            "admin.lookup",
+            "sadmin.lookup"
+        ],
+        "findQuery": {
+            "userId": "%userId%",
+            "status": "allocated"
+        },
+        "selectedFields": {
+            "bedNo": 1,
+            "pgId": 1,
+            "roomId": 1,
+            "allocationId": "$_id"
+        }
+    },
+    "pg.rooms": {
+        "aggregatePipeline": [
+            "pg.lookup",
+            "pg.unwind",
+            "admin.lookup",
+            "admin.unwind",
+            "sadmin.lookup",
+            "sadmin.unwind"
+        ],
+        "findQuery": {},
+        "selectedFields": {}
+    },
+    "room.pg.lookup": {
+        "$lookup": {
+            "localField": "_id",
+            "foreignField": "pgId",
+            "as": "room",
+            "from": "pg.rooms",
+            "pipeline": [
+                {
+                    "$lookup": {
+                        "localField": "_id",
+                        "foreignField": "roomId",
+                        "as": "allocations",
+                        "from": "pg.allocations",
+                        "pipeline": [
+                            {
+                                "$lookup": {
+                                    "localField": "userId",
+                                    "foreignField": "_id",
+                                    "as": "user",
+                                    "from": "users"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "payments": {
+        "actions": {
+            "type::rent": [
+                {
+                    "preexecute": [
+                        {
+                            "type": "update",
+                            "collection": "payments",
+                            "query": {
+                                "_id": "%_id%"
+                            },
+                            "set": {
+                                "status": "inprogress"
+                            }
+                        }
+                    ],
+                    "collection": "pg.allocations",
+                    "findQuery": {
+                        "userId": "%userId%",
+                        "status": "allocated"
+                    },
+                    "selectedFields": {
+                        "bedNo": 1,
+                        "pgId": 1,
+                        "roomId": 1,
+                        "allocationId": "$_id",
+                        "_id": 0
+                    },
+                    "execute": [
+                        {
+                            "type": "update",
+                            "collection": "payments",
+                            "query": {
+                                "_id": "%_id%"
+                            },
+                            "set": {
+                                "bedNo": "%bedNo%",
+                                "pgId": "%pgId%",
+                                "roomId": "%roomId%",
+                                "allocationId": "%allocationId%",
+                                "status": "success"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "room.allocation.lookup": {
+        "$lookup": {
+            "localField": "room.roomId",
+            "foreignField": "roomId",
+            "as": "room.allocations",
+            "from": "pg.room.allocations"
+        }
+    },
+    "user.lookup": {
+        "$lookup": {
+            "localField": "userId",
+            "foreignField": "_id",
+            "as": "user",
+            "from": "users"
+        }
+    },
+    "user.unwind": {
+        "$unwind": "$user"
+    },
+    "admin.lookup": {
+        "$lookup": {
+            "localField": "aId",
+            "foreignField": "_id",
+            "as": "admin",
+            "from": "users"
+        }
+    },
+    "admin.unwind": {
+        "$unwind": "$admin"
+    },
+    "sadmin.lookup": {
+        "$lookup": {
+            "localField": "saId",
+            "foreignField": "_id",
+            "as": "sadmin",
+            "from": "users"
+        }
+    },
+    "sadmin.unwind": {
+        "$unwind": "$sadmin"
+    },
+    "room.lookup": {
+        "$lookup": {
+            "localField": "roomId",
+            "foreignField": "_id",
+            "as": "room",
+            "from": "pg.rooms"
+        }
+    },
+    "room.unwind": {
+        "$unwind": "$room"
+    },
+    "pg.lookup": {
+        "$lookup": {
+            "localField": "pgId",
+            "foreignField": "_id",
+            "as": "pg",
+            "from": "pgs"
+        }
+    },
+    "pg.unwind": {
+        "$unwind": "$pg"
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "UnkownError" : "UnkownError",
+    "UnAuthorized" : "Token must be provided",
+    "NoAccess" : "You don't have access to this route",
+    "AccessTokenExpired" : "Access token expired",
+    "Failed": "Failed",
+    "UpdateFailed" : "Update failed!",
+    "TokenNotFound": "Token not found",
+    "ValidationError" : "Validation error",
+    "InvalidMobileNumber" : "Invalid mobile number",
+    "InvalidRole": "Invalid user role",
+    "InvalidRequest": "Invalid request",
+    "InternalError": "Internal error",
+    "InvalidCredentials" : "Invalid Credentials",
+    "NotFound": "Not Found",
+    "UnknownError" : "Unknown Error",
+    "UnknownOperation" : "Unknown operation",
+    "11000": "Already exists",
+    "UploadError" : "Failed to upload",
+    "OtpVerificationFailed" : "Otp verification failed !"
+}

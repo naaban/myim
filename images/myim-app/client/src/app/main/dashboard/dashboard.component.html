@@ -1,0 +1,77 @@
+<div class="header border-bottom d-flex justify-content-between ">
+    <div class="header-title d-flex align-items-center">
+        {{'dashboard' | i18n:i18nService.currentLanguage}}
+    </div>
+    <div class="d-flex  align-items-center">
+        <div class="px-2">
+            <app-shortcut></app-shortcut>
+        </div>
+        <!-- <div class="px-2">
+            <button class="btn btn-sm btn-outline-primary btn-faded">
+                <div class="d-flex align-items-center ">
+                    <div>
+                        <div class="icon  px-2"><img src="assets/icons/chat.svg" alt=""></div>
+                    </div>
+                    <div>
+                        {{'chatSupport' | i18n:i18nService.currentLanguage}}
+
+                    </div>
+                </div>
+            </button>
+        </div> -->
+        <div class="px-2">
+            <button class="btn  btn-sm btn-primary position-relative">
+                <div class="d-flex align-items-center ">
+                    <div>
+                        <div class="icon px-2"><img src="assets/icons/desktop.svg" alt=""></div>
+                    </div>
+                    <div>
+                        {{'downloadDesktopApp' | i18n:i18nService.currentLanguage}}
+                    </div>
+                </div>
+            </button>
+
+        </div>
+
+
+    </div>
+</div>
+
+<div class="wrapper  p-2">
+    <div class="d-flex dashboard-container">
+        <div class="transactions-container">
+            <div class="card ">
+                <div class="card-header">
+                    {{ 'lastTransactions' | i18n:i18nService.currentLanguage}}
+                </div>
+                <div>
+                    <table class="table   table-borderless ">
+
+                        <thead>
+                            <tr>
+                                <th *ngFor="let col of lastTransactionsColumns">{{alterColumnName(col)}}</th>
+
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr *ngFor="let trx of lastTransactions " class=" hover-primary">
+                                <td *ngFor="let col of lastTransactionsColumns ">{{trx[col]}}</td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+
+                <div class="card-footer hover-primary">
+                    <div class="text-center  text-primary cursor-pointer">
+                        See all transactions
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

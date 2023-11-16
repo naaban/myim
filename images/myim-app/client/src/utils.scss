@@ -1,0 +1,40 @@
+$primary : #4c3cce !default;
+$primary-dark : #4c3cce;
+$primary-light : #786eff;
+
+$secondary : #bd3cce;
+$secondary-dark : #bd3cce;
+$primary-faded : rgba(127, 52, 177, 0.2);
+$background-black-fade : rgba(78, 78, 78, 0.2);
+$background-dark : #15213a;
+$background-light :#222c43;
+$hover : #202020;
+$primary-linear-gradient : linear-gradient(0deg, $primary-light 0%, white 100%);
+$grey-light : #e9ecf1;
+$secondary-dark : #bd3cce;
+$font-size-base: .75rem !default;
+
+$card-cap-padding-x : .5rem !default;
+
+$dropdown-padding-y : 0 !default;
+
+
+
+$opacity1 : opacity(1);
+$opacity05 : opacity(0.5);
+$opacity08 : opacity(0.8);
+
+
+$dropdown-link-hover-bg : $primary-light;
+$dropdown-link-active-bg : $primary-light;
+
+
+// Define Colors as Variables
+$black: #000000;         // Adjust with your black color
+$gray-600: #757575;      // Adjust with your gray color
+$gray-200: #eeeeee;      // Adjust with your lighter gray color
+$white: #ffffff;         // Adjust with your white color
+$gray-100: #f5f5f5;      // Adjust with your light gray color
+$background-black-fade: rgba(0, 0, 0, 0.2); 
+
+@import 'bootstrap/scss/bootstrap';

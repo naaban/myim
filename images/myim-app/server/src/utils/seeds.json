@@ -1,0 +1,46 @@
+[
+    {
+        "collection": "pg.room.facilities",
+        "database": "pgmgnt",
+        "filter": {},
+        "datas": [
+            {
+                "name": "Bed"
+            },
+            {
+                "name": "Mattress"
+            },
+            {
+                "name": "AC"
+            },
+            {
+                "name": "Cooler"
+            },
+            {
+                "name": "Geiser"
+            }
+        ]
+    },
+    {
+        "collection": "pg.room.types",
+        "database": "pgmgnt",
+        "filter": {},
+        "datas": [
+            {
+                "name": "Single"
+            },
+            {
+                "name": "Double"
+            },
+            {
+                "name": "Triple"
+            },
+            {
+                "name": "Four"
+            },
+            {
+                "name": "Five"
+            }
+        ]
+    }
+]

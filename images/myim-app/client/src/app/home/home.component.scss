@@ -1,0 +1,26 @@
+@import "../../utils.scss";
+
+
+.navbar {
+    background-color: $primary-light !important;
+    color: $white !important;
+
+   
+
+}
+
+@media (min-width : 1200px) {
+    .navbar {
+
+
+        .container-fluid {
+            padding-left: 6rem;
+            padding-right: 6rem;
+        }
+    }
+}
+
+
+.resend-otp {
+    color: blue;
+}

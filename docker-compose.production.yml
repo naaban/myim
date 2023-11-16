@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  myim:
+    build:
+      context: ./images/myim-app
+      dockerfile: Dockerfile.${NODE_ENV}
+    env_file:
+      - .env
+    restart: unless-stopped
+    volumes:
+      - ${CERT_MOUNT}:/certs
+      - ${MYIM_SERVER_UPLOADS_MOUNT}:/uploads
+    networks:
+      - app-network
+
+      
+  myim-proxy:
+    build:
+      context: ./images/myim-proxy
+      dockerfile: Dockerfile
+    environment:
+      DOMAIN: ${DOMAIN}
+      EMAIL: ${EMAIL}
+    # network_mode: host
+    container_name: myim-proxy
+    image: myim-proxy
+    restart: unless-stopped
+    entrypoint: /entrypoint.sh
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ${NGINX_WEB_MOUNT}:/var/www/html
+      - ${MYIM_SERVER_UPLOADS_MOUNT}:/var/www/html/uploads
+      - ${NGINX_CONF_MOUNT}:/etc/nginx/conf.d
+      - ${CERT_MOUNT}:/etc/ssl/certs
+    depends_on:
+      - myim-server
+    networks:
+      - app-network
+
+  myim-cert:
+    build:
+      context: ./images/myim-cert
+      dockerfile: Dockerfile
+    environment:
+      DOMAIN: ${DOMAIN}
+      EMAIL: ${EMAIL}
+    image: myim-cert
+    container_name: myim-cert
+    volumes:
+      - ${CERT_MOUNT}:/etc/letsencrypt/live/${DOMAIN}
+      - ${CERT_MOUNT}:/var/lib/letsencrypt
+      - ${CERT_MOUNT}/log:/var/log/letsencrypt
+      - ${NGINX_WEB_MOUNT}:/var/www/html
+    entrypoint: /entrypoint.sh
+    depends_on:
+      - myim-proxy

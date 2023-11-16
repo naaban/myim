@@ -1,0 +1,78 @@
+[
+  {
+    "collection": "users",
+    "fields": [
+      "mobileNumber",
+      "role"
+    ],
+    "options": {
+      "unique": true
+    }
+  },
+  {
+    "collection": "pgs",
+    "fields": [
+      "email"
+    ],
+    "options": {
+      "unique": true
+    }
+  },
+  {
+    "collection": "pg.room.facilities",
+    "fields": [
+      "name"
+    ],
+    "options": {
+      "unique": true
+    }
+  },
+  {
+    "collection": "pg.room.types",
+    "fields": [
+      "name"
+    ],
+    "options": {
+      "unique": true
+    }
+  },
+  {
+    "collection": "pg.allocations",
+    "fields": [
+      "roomId",
+      "userId",
+      "pgId",
+      "userId",
+      "status"
+    ],
+    "options": {
+      "unique": true,
+      "partialFilterExpression": {
+        "status": {
+          "$eq": "allocated"
+        }
+      }
+    }
+  },
+  {
+    "collection": "pg.rooms",
+    "fields": [
+      "pgId",
+      "roomNumber"
+    ],
+    "options": {
+      "unique": true
+    }
+  },
+  {
+    "collection": "pg.expenses",
+    "fields": [
+      "pgId",
+      "invoiceNumber",
+      "invoiceDate"
+    ],
+    "options": {
+      "unique": true
+    }
+  }
+]

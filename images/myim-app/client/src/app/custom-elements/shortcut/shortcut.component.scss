@@ -1,0 +1,43 @@
+@import "../../../utils";
+.logo:hover {
+
+    .tooltip-text {
+        opacity: 1;
+    }
+}
+
+.logo {
+    position: relative;
+}
+.tooltip-text:before {
+    content: "";
+    top: -16px;
+    left: 150px;
+    position: absolute;
+    border: 10px solid transparent;
+    border-bottom-color: $black;
+}
+.tooltip-text {
+    opacity: 0;
+    position: absolute;
+    top: 32px;
+    left: -145px;
+    line-height: 20px;
+    color:$white;
+    background-color: $black;
+    border-radius: 4px;
+    width: 350px;
+    height: 38px;
+    padding: 6px;
+    z-index: 6;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+
+    span {
+        background-color: $white;
+        padding: 5px;
+        border-radius: 2px;
+        color: $black;
+    }
+}

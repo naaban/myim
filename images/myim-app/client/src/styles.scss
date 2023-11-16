@@ -1,0 +1,183 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "./utils.scss";
+
+@font-face {
+    font-family: 'ChivoMono';
+    src: url(./assets/fonts/ChivoMono-Regular.ttf);
+    /* add web-safe font as fallback */
+    font-family: 'ChivoMono', Arial, sans-serif;
+}
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+    font-family: "ChivoMono";
+    line-height: 1.5;
+    font-weight: 400;
+    height: 100%;
+}
+
+* {
+    transition: all $transition-base;
+}
+
+.icon {
+    position: relative;
+    display: flex;
+
+    img {
+        width: 1.2rem;
+        height: 1.2rem;
+    }
+}
+
+.input-icon {
+    img {
+        width: 1rem;
+        height: 1rem;
+        filter: $opacity05;
+    }
+}
+
+// Hover Styles
+.hover-primary:hover {
+    background-color: $primary-light;
+    cursor: pointer;
+    // transition: all .3s linear;
+}
+
+.hover-shadow-primary:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 0.9rem 0px $primary-light;
+    // transition: all .3s linear;
+}
+
+.shadow-primary {
+    box-shadow: 0px 0px 0.9rem 0px $primary-light;
+    // transition: all .3s linear;
+}
+
+.hover:hover {
+    filter: $opacity1;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.09);
+    // transition: all .3s linear;
+}
+
+.btn-black {
+    background-color: $black;
+    color: white;
+}
+
+.text-gray {
+    color: $gray-600;
+}
+
+.width-15 {
+    width: 15%;
+}
+
+.width-85 {
+    width: 85%;
+}
+
+.display-block {
+    display: block;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.input-group-prepend {
+    margin-right: -1px;
+
+    .input-group-text {
+        display: flex;
+        align-items: center;
+        padding: 0.375rem 0.75rem;
+        margin-bottom: 0;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        text-align: center;
+        white-space: nowrap;
+        background-color: #e9ecef;
+        border-radius: 0.25rem;
+    }
+}
+
+label {
+    opacity: 0.6;
+}
+
+.header {
+    padding: 20px;
+    border-bottom: 1px solid $gray-200;
+    background-color: $white;
+    max-height: 6vh;
+    border-bottom: 1px $gray-400 solid;
+}
+
+.wrapper {
+    background-color: $gray-100;
+    height: 94vh;
+    position: relative;
+    overflow: auto;
+}
+
+.card {
+    .card-header {
+        padding-left: 6px;
+    }
+}
+
+table {
+    margin: 0;
+
+    thead {
+        background-color: $gray-200;
+    }
+}
+
+// Dropdown customized style
+.action {
+    display: flex;
+
+    .action-label {
+        height: 2rem;
+        border-radius: 0.5rem;
+        color: $black;
+        background-color: $white;
+    }
+
+    .fill-dark {
+        background-color: $background-black-fade;
+    }
+}
+
+.icon-close {
+    width: 1rem;
+    height: 0.5rem;
+}
+
+.icon-open {
+    width: 1rem;
+    height: 1rem;
+}
+
+li {
+    list-style-type: none;
+}
+
+
+.border-radius {
+    border-radius: 0.5rem;
+}
+
+
+.ease-in-background {
+    transition: background-color 0.3s ease-in, color 0.3s ease-in;;
+}

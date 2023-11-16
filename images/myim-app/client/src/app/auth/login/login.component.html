@@ -1,0 +1,64 @@
+<div class="login">
+
+
+
+    <div class="d-flex justify-content-end shadow">
+
+        <div class="login-content p-3 px-5 close">
+
+            <div class="d-flex justify-content-between">
+                <div>
+                    Login / Register
+                </div>
+
+                <div class="cursor-pointer" (click)="close()">
+                    x
+                </div>
+            </div>
+
+            <div class="login-form mt-4">
+                <form [formGroup]="loginRegisterForm" (ngSubmit)="loginRegisterProcess()">
+                    <div class="mb-3">
+                        <label for="mobileNumber" class="form-label">Enter mobile number</label>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">+91</span>
+                            <input type="text" [disabled]="isOtpSent" class="form-control"
+                                formControlName="mobileNumber"
+                                [ngClass]="{ 'is-invalid': submitted && f['mobileNumber'].errors }"
+                                placeholder="Mobile number" aria-label="MobileNumber" aria-describedby="basic-addon1">
+                            <div *ngIf="submitted && f['mobileNumber'].errors" class="invalid-feedback">
+                                <div *ngIf="f['mobileNumber'].errors['required']">Mobile number is required</div>
+                                <div
+                                    *ngIf="f['mobileNumber'].errors['maxlength'] || f['mobileNumber'].errors['minlength']">
+                                    Mobile number length should be 10</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3" *ngIf="isOtpSent">
+                        <label for="mobileNumber" class="form-label">Enter OTP</label>
+                        <input type="text" minlength="6" maxlength="6" class="form-control" formControlName="otp" placeholder="Enter OTP"
+                            aria-label="MobileNumber" aria-describedby="basic-addon1"
+                            [ngClass]="{ 'is-invalid': submitted && f['otp'].errors }">
+                        <div *ngIf="submitted && f['otp'].errors" class="invalid-feedback">
+                            <div *ngIf="f['otp'].errors['required']">Mobile number is required</div>
+                        </div>
+                        <div *ngIf="submitted && f['otp'].errors" class="invalid-feedback">
+                            <div *ngIf="f['otp'].errors['required']">Mobile number is required</div>
+                            <div *ngIf="f['otp'].errors['maxlength'] || f['otp'].errors['minlength']">Mobile number
+                                length should be 10</div>
+                        </div>
+                    </div>
+                    <div *ngIf="isOtpSent">
+                        <a class="resend-otp cursor-pointer" (click)="resendOtp()">Resend OTP</a>
+                    </div>
+                    <div class="d-grid gap-2 mt-3">
+                        <button class="btn btn-primary shadow" type="submit">Get OTP</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</div>
