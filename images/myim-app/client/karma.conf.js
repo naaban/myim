@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/my-invoicer-ui'),
+      dir: require('path').join(__dirname, './coverage/myim'),
       subdir: '.',
       reporters: [
         { type: 'html' },

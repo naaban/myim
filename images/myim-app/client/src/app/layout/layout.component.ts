@@ -9,14 +9,10 @@ import { SIDE_NAV_ITEMS } from '../utils/_side.nav';
 })
 export class LayoutComponent implements OnInit {
 
-
-
   constructor(private loaderService: LoaderService) {
   }
- 
-
+  
   ngOnInit(): void {
   }
-
 
 }

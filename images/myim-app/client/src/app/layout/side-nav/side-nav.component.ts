@@ -1,6 +1,6 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DropDownMenu } from 'src/app/animations';
+import { SlideDown } from 'src/app/animations';
 import { AppRouteHandler } from '../../utils/app-route.handler';
 import { ACTION_NAV_ITEMS } from 'src/app/utils/_action.nav';
 import { SIDE_NAV_ITEMS } from 'src/app/utils/_side.nav';
@@ -10,10 +10,9 @@ import { Location } from '@angular/common';
   selector: 'myim-side-nav',
   templateUrl: './side-nav.component.html',
   styleUrls: ['./side-nav.component.scss'],
-  animations: [DropDownMenu]
+  animations: [SlideDown]
 })
 export class SideNavComponent extends AppRouteHandler implements OnInit {
-
 
   public animationState = 'out';
   public sideNavItems: any[] = SIDE_NAV_ITEMS
@@ -64,8 +63,6 @@ export class SideNavComponent extends AppRouteHandler implements OnInit {
     })
   }
 
-
-
   onNavItemClicked(index: number, childIndex?: any) {
     let nav = this.sideNavItems[index];
     this.sideNavItems.map(item => {
@@ -100,8 +97,12 @@ export class SideNavComponent extends AppRouteHandler implements OnInit {
     }
   }
 
-
   openActions() {
     this.showActions = !this.showActions;
+  }
+
+  onActionClicked(action : any) {
+    this.showActions = !this.showActions;
+    this.goto(action.path)
   }
 }

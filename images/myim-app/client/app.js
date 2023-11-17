@@ -15,7 +15,7 @@ const {app, BrowserWindow} = require('electron')
 
       mainWindow.loadURL(
         url.format({
-          pathname: path.join(__dirname, `/dist/my-invoicer-ui/index.html`),
+          pathname: path.join(__dirname, `/dist/myim/index.html`),
           protocol: "file:",
           slashes: true
         })

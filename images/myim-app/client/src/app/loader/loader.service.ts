@@ -2,8 +2,6 @@
 import { Component, Type, ViewChild } from "@angular/core";
 import { ComponentRef, Injectable, ViewContainerRef } from "@angular/core";
 import { BehaviorSubject, Observable, Subject } from "rxjs";
-import { LoginComponent } from "../auth/login/login.component";
-import { LoaderComponent } from "./loader.component";
 
 
 @Injectable({

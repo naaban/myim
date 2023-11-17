@@ -6,6 +6,7 @@ import { BannerComponent } from './banner/banner.component';
 import { ShortcutComponent } from './shortcut/shortcut.component';
 import { HeaderComponent } from './header/header.component';
 import { FormComponent } from './form/form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -16,15 +17,19 @@ import { FormComponent } from './form/form.component';
     ShortcutComponent,
     HeaderComponent,
     FormComponent,
+  
   ],
   exports : [
     DropdownComponent,
     BannerComponent,
-    ShortcutComponent
+    ShortcutComponent,
+    FormComponent
   ],
   imports: [
     CommonModule,
-    I18nModule
+    I18nModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
-export class CustomElementsModule { }
+export class SharedModule { }

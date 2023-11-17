@@ -33,11 +33,11 @@
 
                         </div>
                     </div>
-                    <div class="nav-dropdown-menu border-radius sub-menu" *ngIf="showActions" [@dropDownMenu]>
-                        <div *ngFor="let c of categories" class="category-container  sub-menu-item position-relative">
+                    <div class="nav-dropdown-menu border-radius sub-menu" *ngIf="showActions" [@slideDown]>
+                        <div *ngFor="let c of categories" class="category-container  slide-down position-relative">
                             <div class="category p-1">{{c.title | i18n:i18nService.currentLanguage}}</div>
                             <a class="dropdown-item ease-in-background position-relative p-1"
-                                *ngFor="let sc of c.children; let i = index" href="#">
+                                *ngFor="let sc of c.children; let i = index" (click)="onActionClicked(sc)" >
                                 {{sc.title | i18n:i18nService.currentLanguage}}
                             </a>
                         </div>
@@ -63,10 +63,10 @@
                 </div>
             </a>
             <ng-container *ngIf="nav.children && nav.children.length > 0">
-                <div class="display-block sub-menu w-100 " [@dropDownMenu] *ngIf="nav.isOpen">
+                <div class="display-block sub-menu w-100 " [@slideDown] *ngIf="nav.isOpen">
                     <a [ngClass]="{'active': c.isActive , 'in-active' : !c.isActive }"
                         *ngFor="let c of nav.children; let ci = index" (click)="onNavItemClicked( i ,ci )"
-                        class="d-flex item  hover py-1 align-items-center w-100 text-decoration-none cursor-pointer sub-menu-item ">
+                        class="d-flex item  hover py-1 align-items-center w-100 text-decoration-none cursor-pointer slide-down ">
                         <div class="icon ps-5">
                         </div>
                         <div class=" w-100 ps-4 d-flex justify-content-between">

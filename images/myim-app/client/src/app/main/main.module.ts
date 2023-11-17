@@ -6,11 +6,9 @@ import { PartiesComponent } from './parties/parties.component';
 import { ItemsComponent } from './items/items.component';
 import { I18nModule } from '../utils/language/i18n.module';
 import { I18nPipe } from '../utils/language/i18n.pipe';
-import { ShortcutComponent } from '../custom-elements/shortcut/shortcut.component';
-import { BannerComponent } from '../custom-elements/banner/banner.component';
-import { CustomElementsModule } from '../custom-elements/custom-elements.module';
 import { PartyModule } from './parties/party.module';
 import { ViewPartyComponent } from './parties/view-party/view-party.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -23,7 +21,7 @@ import { ViewPartyComponent } from './parties/view-party/view-party.component';
     MainRoutingModule,
     PartyModule,
     I18nModule,
-    CustomElementsModule
+    SharedModule
   ]
 })
 export class MainModule { }

@@ -2,30 +2,36 @@ import { FormGroup } from "@angular/forms";
 
 export interface FormModel {
     formGroup: FormGroup
-    data: FormData
+    elementsPerRow: number
+    elements: ElementDefinition[]
 }
 
-export interface FormData {
-    formControlName?: string,
-    element: FormElement
-    elementData?: FormElementData[] | FormElementData
-    type?: FormElementType
+export interface ElementDefinition {
+    formControlName: string | ''
+    elementType?: FormElementType
+    elementData?: FormElementData[] | FormElementData | any
+    type?: FormInputType
+    action?: Function
+    template?: any,
+    label?: string
 }
 
 export interface FormElementData {
-
+    id?: string,
+    value: string
 }
 
-export enum FormElement {
+export enum FormElementType {
     INPUT = "input",
     SELECT = "select",
     DROPDOWN = "dropdown",
-    BUTTON = "button"
+    BUTTON = "button",
+    CUSTOM = "custom"
 
 }
-export enum FormElementType {
+export enum FormInputType {
     NUMBER = "number",
+    RESET= "reset",
     PASSWORD = "password",
     TEXT = "text",
-
 }

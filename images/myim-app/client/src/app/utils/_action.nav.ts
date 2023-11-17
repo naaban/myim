@@ -4,12 +4,13 @@ export const ACTION_NAV_ITEMS: any[] = [
         "title": "general",
         "children": [
             {
-                "title": "createParty"
+                "title": "createParty",
+                "path" : "/layout/parties/add-party",
             },
             {
                 "title": "createItem"
             }
-        ]
+        ] 
     },
     {
         "title": "createSalesInvoice",

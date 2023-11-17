@@ -3,15 +3,15 @@ import {
     animate, query, sequence, stagger
   } from '@angular/animations';
   
-  export const DropDownMenu = trigger('dropDownMenu', [
+  export const SlideDown = trigger('slideDown', [
     transition(':enter', [
       style({ height: 0, overflow: 'hidden' }),
-      query('.sub-menu-item', [
+      query('.slide-down', [
         style({ opacity: 0, transform: 'translateY(-200px)' })
       ]),
       sequence([
         animate('100ms', style({ height: '*' })),
-        query('.sub-menu-item', [
+        query('.slide-down', [
           stagger(50, [
             animate('200ms', style({ opacity: 1, transform: 'none' }))
           ])
@@ -21,9 +21,9 @@ import {
   
     transition(':leave', [
       style({ height: '*', overflow: 'hidden' }),
-      query('.sub-menu-item', [style({ opacity: 1, transform: 'none' })]),
+      query('.slide-down', [style({ opacity: 1, transform: 'none' })]),
       sequence([
-        query('.sub-menu-item', [
+        query('.slide-down', [
           animate(
             '200ms',
             style({ opacity: 0, transform: 'translateY(-200px)' })

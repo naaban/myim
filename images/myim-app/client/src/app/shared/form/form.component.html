@@ -1,0 +1,36 @@
+<!-- form.component.html -->
+<ng-container *ngIf="form.elements.length > 0">
+    <div class="container">
+        <form [formGroup]="form.formGroup">
+            <div class="row">
+                <ng-container *ngFor="let element of form.elements; let i = index">
+                    <div class="col-md-{{ 12 / form.elementsPerRow }}">
+                        <div class="mb-3">
+                            <label for="{{ element.formControlName }}" class="form-label">{{ element.label }}</label>
+                            <ng-container [ngSwitch]="element.elementType">
+                                <!-- Input element -->
+                                <input *ngSwitchCase="'input'" class="form-control" [formControlName]="element.formControlName"
+                                    [type]="element.type" [value]="element.elementData?.value">
+                                <!-- Select element -->
+                                <select *ngSwitchCase="'select'" class="form-select" [formControlName]="element.formControlName">
+                                    <option *ngFor="let option of element.elementData" [value]="option.id">{{ option.value }}</option>
+                                </select>
+                                <!-- Button element -->
+                                <button *ngSwitchCase="'button'" class="btn btn-primary" [type]="element.type" (click)="element?.action(form)">
+                                    {{ element.label }}
+                                </button>
+                            </ng-container>
+
+                            <!-- Display validation errors -->
+                            <div *ngIf="isInvalid(element.formControlName)" class="text-danger">
+                                {{ getValidationMessage(element) }}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Start a new row after the specified number of elements -->
+                    <div *ngIf="(i + 1) % form.elementsPerRow === 0" class="w-100"></div>
+                </ng-container>
+            </div>
+        </form>
+    </div>
+</ng-container>

@@ -2,23 +2,23 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Input, NgZone, OnIn
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MyFormBuilders } from 'src/app/form.builder';
+import { AppRouteHandler } from 'src/app/utils/app-route.handler';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'myim-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit, AfterViewInit {
-
- 
-
+export class LoginComponent extends AppRouteHandler implements OnInit, AfterViewInit {
   public isOtpSent: boolean = false
 
   public loginRegisterForm: FormGroup;
 
   public submitted: boolean = false;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private ngZone: NgZone) {
+  constructor(private formBuilder: FormBuilder, router: Router, ngZone: NgZone, location: Location) {
+    super(router, ngZone, location);
     this.loginRegisterForm = MyFormBuilders.getLoginRegisterForm(this.formBuilder)
   }
   ngAfterViewInit(): void {
@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   sendOtp() {
+     this.goto('/layout/dashboard')
   }
 
   loginRegisterProcess() {

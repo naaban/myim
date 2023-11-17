@@ -1,11 +1,12 @@
 {
-  "name": "my-invoicer-ui",
+  "name": "myim",
   "version": "0.0.0",  "main": "app.js",
   "scripts": {
     "ng": "ng",
+    "electron": "electron .",
     "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
+    "watch": "ng build --watch --configuration development --base-href ./ ",
     "test": "ng test"
   },
   "private": true,
